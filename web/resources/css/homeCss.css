@@ -145,3 +145,7 @@ input{
     position: absolute;
     bottom: 0;
 }
+.footer-icons > i.d-inline{
+    padding-left: 4px;
+    padding-right: 4px;
+}
