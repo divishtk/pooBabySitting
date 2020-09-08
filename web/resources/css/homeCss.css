@@ -6,6 +6,26 @@
     color: hotpink!important;
     padding: 4px 11px;
 }
+.customHR{
+    width: 20%;
+    border-radius: 50px;
+    border: 3px solid #ffb9cc;
+}
+.customHR-blue{
+    width: 20%;
+    border-radius: 50px;
+    border: 3px solid #88d4f2;
+}
+.customHR-white{
+    width: 20%;
+    border-radius: 50px;
+    border: 3px solid #ffffff;
+}
+.customHR-darkblue{
+    width: 20%;
+    border-radius: 50px;
+    border: 3px solid #262f71;
+}
 
 section{
     text-align: center;
@@ -13,18 +33,54 @@ section{
     transition: transform 0.2s ease-in-out;
     background: rgba(255,255,255,0.2);
     z-index: 99;
-    height: 90vh;
+    height: 100vh;
 }
 .section-color{
     background-image:  url(http://poobabysitting.com/wp-content/uploads/2020/09/babysitter-background-color-1.png),
         linear-gradient(165deg,#ffffff 40%,#ffb9cc 100%)!important;
 }
 .section-img{
+    height: 100%;
     background-image:  url(http://poobabysitting.com/wp-content/uploads/2020/09/babysitter-background-color-1.png);
 }
 section > div:nth-child(1){
     padding: 25px 100px;
 }
+/*Section No. 3*/
+.section-all{
+    background-blend-mode: overlay;
+    background-image: url(http://poobabysitting.com/wp-content/uploads/2020/09/babysitter-background-white-1.png),linear-gradient(180deg,#32bcf2 0%,#7dd1f1 100%)!important;
+}
+.section-all > div:nth-child(1),.section-all > div:nth-child(2){
+    padding: 25px 100px;
+}
+.card-icon{
+    padding: 52px 13px;
+}
+.individual-card > span{
+    border-radius: 500px 500px 500px 500px;
+    overflow: hidden;
+    border-width: 14px;
+    border-color: #ffffff;
+    box-shadow: 0px 12px 18px -6px rgba(102,175,204,0.35);
+}
+/*Section No. 3*/
+
+/*section No. 4*/
+.section-4{
+    background-color: #f2f5f7;
+    color: #262f71;
+}
+.section-4 > div:nth-child(1),.section-4 > div:nth-child(2){
+    padding: 25px 100px;
+}
+.card-icon{
+    border-radius: 8px;
+    background-color: white;
+    padding:10px;
+}
+/*section No. 4*/
+
 .img-illust{
     height: 60vh
 }
@@ -68,4 +124,24 @@ input{
 }
 .fs-14{
     font-size: 14px;
+}
+.my-pink-color{
+    color: #ffb9cc
+}
+.my-blue-color{
+    color: #88d4f2;
+}
+.my-darkblue-color{
+    color:#262f71;
+}
+.bg-grey{
+    background: #f2f5f7;
+    height: 100%;
+}
+.bg-grey > img{
+    width: 100%;
+}
+.botton-align{
+    position: absolute;
+    bottom: 0;
 }
