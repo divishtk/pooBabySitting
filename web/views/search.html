@@ -13,13 +13,18 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
         <link href="../resources/css/homeCss.css" rel="stylesheet" type="text/css"/>
-        <link href="../resources/css/homeCss.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/registerCss.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/search.css" rel="stylesheet" type="text/css"/>
+        <!--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">-->
+        <link href="../resources/css/pikaday.css" rel="stylesheet" type="text/css"/>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="../resources/js/search.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500&display=swap" rel="stylesheet">
+
         <!-- Font Awesome JS -->
-        <!--        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
     </head>
     <body>
@@ -27,12 +32,12 @@ and open the template in the editor.
             <header class="shadow">
                 <nav class="navbar navbar-light bg-white">
                     <a class="navbar-brand customIcon"> Poo-<i class="fas fa-baby"></i>-Sitting</a>
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2 border-bottom bg-light" type="search" placeholder="Search.." aria-label="Search" style="width: 150px">
-                        <a href="views/search.html" style="text-decoration: none;color: white">
-                            <button class="btn btn-outline-secondary my-2 my-sm-0 border-0" type="submit"><i class="fas fa-search"></i></button>
-                        </a>
-                    </form>
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <div class="p-2 bd-highlight cursorOnHover"><i class="fas fa-power-off"></i></div>
+                        <div class="p-2 bd-highlight cursorOnHover onHover">About</div>
+                        <div class="p-2 bd-highlight cursorOnHover onHover">Service</div>
+                        <div class="p-2 bd-highlight cursorOnHover onHover">Home</div>
+                    </div>
                 </nav>
             </header>
             <div class="fluid-container" style="overflow: hidden">
@@ -41,23 +46,53 @@ and open the template in the editor.
                 <div class="row no-gutter">
                     <div class="col-3">
                         <div class="sitterFilter card mx-2" style="height: 80vh;">
+                            <div class="pooTopBar px-4 py-1" style="background: #ff69b4;height: 40px;">
+                                <p class="h3 text-white filterText py-2">Filter: </p>
+                            </div>
                             <div class="mx-4 my-2">
-                                <label>Filter 1:</label>
-                                <div class="form-inline py-2">
-                                    <input class="form-control mx-2" type="checkbox" checked/><span>Both</span>
-                                    <input class="form-control mx-2" type="checkbox"/><span> Male</span>
-                                    <input class="form-control mx-2" type="checkbox"/><span> Female</span>
+                                <label class="font-weight-bold">Gender:</label>
+                                <div class="form-inline py-1">
+                                    <input class="empViewFilter form-control mx-2 remove-focus" type="radio" name="radio1" data-filterType="gender"/><span> Male</span>
+                                    <input class="empViewFilter form-control mx-2 remove-focus" type="radio" name="radio1" data-filterType="gender"/><span> Female</span>
                                 </div>
                             </div>
                             <div class="mx-4 my-2">
-                                <label>Filter 2:</label>
-                                <input type="range" class="form-control remove-focus" min="10" max="60"/>
+                                <label class="font-weight-bold">Age:</label>
+                                <input type="range" id="rangeFilter" class="form-control remove-focus " min="10" max="60"/>
+                                <div class="row d-flex justify-content-between">
+                                    <div class="px-4 pb-2">10</div>
+                                    <div class="px-4 pb-2">60</div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-6">
-                                        <input class="form-control" type="text" value="10">
+                                    <div class="col">
+                                        <input id="pooAge" class="empViewFilter form-control" type="number" value="" data-filterType="age">
                                     </div>
-                                    <div class="col-6">
-                                        <input class="form-control" type="text" value="50">
+                                </div>
+                            </div>
+                            <div class="mx-4 my-2">
+                                <label class="font-weight-bold">Location:</label>
+                                <div class="">
+                                    <select id="filterSelect1" class="empViewFilter form-control" data-filtertype="loc">
+                                        <option>Aurangabad</option>
+                                        <option>Pune</option>
+                                        <option>Mumbai</option>
+                                        <option>Nagpur</option>
+                                        <option>Nashik</option>
+                                        <option>Navi Mumbai</option>
+                                        <option>Thane</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mx-4 my-2">
+                                <label class="font-weight-bold">Skills:</label>
+                                <div class="">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="empViewFilter custom-control-input" id="customCheck1" data-filterType="skills">
+                                        <label class="custom-control-label" for="customCheck1">Cooking</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="empViewFilter custom-control-input" id="customCheck2" data-filterType="skills">
+                                        <label class="custom-control-label" for="customCheck2">Cleaning</label>
                                     </div>
                                 </div>
                             </div>
@@ -67,92 +102,176 @@ and open the template in the editor.
                         <div class="sitterMain">
                             <div class="row card p-2">
                                 <div class="col d-flex flex-row-reverse">
-                                    <div class="">
-
-                                    </div>
-                                    <div class="">
-
-                                    </div>
-                                    <div class="">
-                                        <label for="PreFilter">Sort By: </label>
-                                        <select class="form-control-sm mx-2">
-                                            <option>Name</option>
-                                            <option>Age</option>
-                                            <option>Location</option>
-                                            <option>Experience</option>
+                                    <div class="text-muted">
+                                        <label for="PreFilter" >Sort By: </label>
+                                        <select id="sortByFunction" class="form-control-sm mx-2 text-muted">
+                                            <option value="byName">Name</option>
+                                            <option value="byAge">Age</option>
+                                            <option value="byLoc">Location</option>
+                                            <option value="byExp">Experience</option>
                                         </select>
+                                    </div>
+                                    <div class="d-flex flex-row mr-auto">
+                                        <input type="text" class="form-control mx-2" id="searchText" placeholder="Search the customer" style="min-width: 400px">
+                                        <button type="button" class="btn btn-sm btn-outline-info mx-2" id="searchBar">Search</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row card my-2" style="min-height: 600px">
-                                <div class="col">
-                                    <div class="card shadow m-2" style="width: 180px;min-height: 350px;height: auto;float: left">
-                                        <img src="../resources/images/profile.svg" style="max-width:180px; max-height:180px" alt="profile"/>
-                                        <p class="h5 text-center m-1">Stark</p>
-                                        <div class="d-flex flex-column bd-highlight m-2 fs-14">
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Age</div>
-                                                <div class="font-weight-light text-secondary">20</div>
-                                            </div>
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Location</div>
-                                                <div class="font-weight-light text-secondary">Mumbai</div>
-                                            </div>
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Experience</div>
-                                                <div class="font-weight-light text-secondary">2 years</div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-center p-2">
-                                            <div>
-                                                <button class="btn btn-outline-primary btn-sm mx-2 border">Check me out!</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card shadow m-2" style="width: 180px;min-height: 350px;height: auto;float: left">
-                                        <img src="../resources/images/profile.svg" style="max-width:180px; max-height:180px" alt="profile"/>
-                                        <p class="h5 text-center">Nevets</p>
-                                        <div class="d-flex flex-column bd-highlight m-2 fs-14">
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Age</div>
-                                                <div class="font-weight-light text-secondary">20</div>
-                                            </div>
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Location</div>
-                                                <div class="font-weight-light text-secondary">Mumbai</div>
-                                            </div>
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Experience</div>
-                                                <div class="font-weight-light text-secondary">2 years</div>
+                        </div>
 
-                                            </div>
+                        <div class="empListBody row card my-2" style="min-height: 600px;">
+                            <div class="col" id="empListCards">
+                                <div id="pre-loader" class="preLoader text-center">
+                                    <img src="../resources/preloader/dash-loader-large.gif" alt="loading..." style="height: 400px;"/>
+                                </div>
+                                <!--
+                                <div class="card shadow m-2" style="width: 180px;min-height: 350px;height: auto;float: left">
+                                    <img src="../resources/images/profile.svg" style="max-width:180px; max-height:180px" alt="profile"/>
+                                    <p class="h5 text-center m-1">Stark</p>
+                                    <div class="d-flex flex-column bd-highlight m-2 fs-14">
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Age</div>
+                                            <div class="font-weight-light text-secondary">20</div>
                                         </div>
-                                        <div class="d-flex justify-content-center p-2">
-                                            <div>
-                                                <button class="btn btn-outline-primary btn-sm mx-2 border">Check me out!</button>
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Location</div>
+                                            <div class="font-weight-light text-secondary">Mumbai</div>
+                                        </div>
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Experience</div>
+                                            <div class="font-weight-light text-secondary">2 years</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center p-2">
+                                        <div>
+                                            <button class="btn btn-outline-0 border-0 btn-sm mx-2 border"><strong>View Profile</strong></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card shadow m-2" style="width: 180px;min-height: 350px;height: auto;float: left">
+                                    <img src="../resources/images/profile.svg" style="max-width:180px; max-height:180px" alt="profile"/>
+                                    <p class="h5 text-center">Nevets</p>
+                                    <div class="d-flex flex-column bd-highlight m-2 fs-14">
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Age</div>
+                                            <div class="font-weight-light text-secondary">20</div>
+                                        </div>
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Location</div>
+                                            <div class="font-weight-light text-secondary">Mumbai</div>
+                                        </div>
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Experience</div>
+                                            <div class="font-weight-light text-secondary">2 years</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center p-2">
+                                        <div>
+                                            <button class="btn btn-outline-0 border-0 btn-sm mx-2 border"><strong>View Profile</strong></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card shadow m-2" style="width: 180px;min-height: 350px;height: auto;float: left">
+                                    <img src="../resources/images/profile.svg" style="max-width:180px; max-height:180px" alt="profile"/>
+                                    <p class="h5 text-center m-1">Stark</p>
+                                    <div class="d-flex flex-column bd-highlight m-2 fs-14">
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Age</div>
+                                            <div class="font-weight-light text-secondary">20</div>
+                                        </div>
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Location</div>
+                                            <div class="font-weight-light text-secondary">Mumbai</div>
+                                        </div>
+                                        <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
+                                            <div class="font-weight-bold text-dark">Experience</div>
+                                            <div class="font-weight-light text-secondary">2 years</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center p-2">
+                                        <div>
+                                            <button class="btn btn-outline-0 border-0 btn-sm mx-2 border"><strong>View Profile</strong></button>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div id="empViewBody" class="empBody my-2" style="min-height: 600px;display: none;">
+                            <div class="row no-gutter" style="min-height: 600px">
+                                <div class="col-4 border pt-3">
+                                    <div style="
+                                         position: relative;
+                                         ">
+                                        <img class="empIndImage" src="../resources/images/profile.svg" alt="nanny" style="width: 100%;height: 270px;">    
+                                        <div class="leftArrow goLeftEmp cursorOnHover">
+                                            <i class="fas fa-angle-left"></i>
+                                        </div>
+                                        <div class="rightArrow goRightEmp cursorOnHover">
+                                            <i class="fas fa-angle-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="w-100 text-center my-4">
+                                        <button class="btn btn-outline-success btn-block btn-lg">Hire Me</button>
+                                    </div>
+                                    <div class="w-100 text-center my-4">
+                                        <button class="goBackEmpList btn btn-outline-danger btn-block btn-lg">
+                                            <i class="fas fa-arrow-left cursorOnHover"></i>
+                                            Go Back
+                                        </button>
+                                    </div>
+                                    <!--<img src="../resources/images/profile.svg" alt="nanny" style="width: 100%">-->
+                                </div>
+                                <div class="col-4 border pt-3">
+                                    <p class="h3 empIndName pooFontGrandstander" data-selId="">Jessica Ferns</p>
+                                    <p>Has a 5 Years of Experience</p>
+                                    <p class="decription" style="font-size: smaller;">
+                                        <i>"Hey! My name is Jill and I'm currently in my second year of the nursing program at the University of Michigan.
+                                            I've been babysitting since I was 12 years old. I started off by 
+                                            watching my younger siblings and then started babysitting kids for 
+                                            other families in our neighborhood. I absolutely love working with 
+                                            infants and toddlers, but I babysit children of all ages. I love 
+                                            anything artistic and never miss a chance to do some finger painting 
+                                            with kids I'm babysitting :)."
+                                        </i>
+                                    </p>
+                                </div>
+                                <div class="col-4 border pt-3">
+                                    <div class="row">
+                                        <div class="col pt-2 px-4 border-bottom pb-4">
+                                            <div class="d-flex flex-row justify-content-center">
+                                                <div class="font-weight-bold">Charges...</div>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <div class="font-weight-bold">Daily Charges:</div>
+                                                <div>$ 8</div>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <div class="font-weight-bold">Monthly Charges:</div>
+                                                <div>$ 200</div>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <div class="font-weight-bold">Yearly Charges:</div>
+                                                <div>$ 2400</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card shadow m-2" style="width: 180px;min-height: 350px;height: auto;float: left">
-                                        <img src="../resources/images/profile.svg" style="max-width:180px; max-height:180px" alt="profile"/>
-                                        <p class="h5 text-center m-1">Stark</p>
-                                        <div class="d-flex flex-column bd-highlight m-2 fs-14">
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Age</div>
-                                                <div class="font-weight-light text-secondary">20</div>
-                                            </div>
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Location</div>
-                                                <div class="font-weight-light text-secondary">Mumbai</div>
-                                            </div>
-                                            <div class="px-2 py-1 bd-highlight d-flex justify-content-between border-bottom">
-                                                <div class="font-weight-bold text-dark">Experience</div>
-                                                <div class="font-weight-light text-secondary">2 years</div>
+                                    <div class="row">
+                                        <div class="col border-bottom p-2 py-4 text-center">
+                                            <p class="h4 text-center"> Payment Option</p>
+                                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                <label class="btn btn-info">
+                                                    <input type="radio" name="options" id="option2" autocomplete="off"> Cash
+                                                </label>
+                                                <label class="btn btn-info">
+                                                    <input type="radio" name="options" id="option3" autocomplete="off"> Credit
+                                                </label>
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-center p-2">
-                                            <div>
-                                                <button class="btn btn-outline-primary btn-sm mx-2 border">Check me out!</button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col border-bottom p-2">
+                                            <div class="p-2">
+                                                <input type="date" id="datepicker" class="datepicker hide" style="display: none;">
                                             </div>
                                         </div>
                                     </div>
@@ -163,5 +282,22 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+        <!--<script src="../resources/js/caleandar.min.js" type="text/javascript"></script>-->
+        <!--https://github.com/jackducasse/caleandar-->
+        <!--OR-->
+        <!--        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>-->
+        <script src="../resources/js/pikaday.js" type="text/javascript"></script>
+        <script src="../resources/js/moment.min.js" type="text/javascript"></script>
+        <!--https://github.com/Pikaday/Pikaday-->
+        <script>
+            var field = document.getElementById('datepicker');
+            var picker = new Pikaday({
+                onSelect: function (date) {
+                    field.value = picker.toString();
+                }
+            });
+            field.parentNode.insertBefore(picker.el, field.nextSibling);
+        </script>
     </body>
 </html>

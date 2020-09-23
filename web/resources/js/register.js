@@ -5,7 +5,6 @@ $(document).ready(function () {
     var active_color = "#e75480";
 
 
-
     var child = 1;
     var length = $("section").length - 1;
     $("#prev").addClass("disabled");
@@ -57,10 +56,11 @@ $(document).ready(function () {
     $("circle:nth-of-type(1)").css("fill", active_color);
 
 
-    $(".button").click(function () {
+    $(document).on('click', '.button', function (e) {
+        e.preventDefault();
+        var id = $(this).attr("id");
         $("#svg_form_time rect").css("fill", active_color);
         $("#svg_form_time circle").css("fill", active_color);
-        var id = $(this).attr("id");
         if (id == "next") {
             $("#prev").removeClass("disabled");
             if (child >= length) {
@@ -95,6 +95,85 @@ $(document).ready(function () {
         currentSection.prevAll('section').css('transform', 'translateX(-100px)');
         currentSection.nextAll('section').css('transform', 'translateX(100px)');
         $('section').not(currentSection).hide();
+    });
+
+    $(document).on('change', '.inputGroupFile01', function (e) {
+        console.log(e);
+        if (e.target.files != null && e.target.files.length > 0) {
+            var file = e.target.files[0];
+            var mb = ((file.size / 1024) / 1024);
+            if (file.type == "application/pdf") {
+                if (mb < 15) {
+                    $(this).next().find('span').text(e.target.files.length + " files");
+                } else {
+                    Swal.fire({
+                        title: 'File Error!',
+                        text: 'Uploaded File should be less than 15 mb',
+                        icon: 'error',
+                        confirmButtonText: 'Okay'
+                    });
+                }
+            } else {
+                Swal.fire({
+                    title: 'File Error!',
+                    text: 'Uploaded File should be a pdf',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
+            }
+        }
+    });
+    $(document).on('change', '#inputGroupFile02', function (e) {
+        console.log(e);
+        if (e.target.files != null && e.target.files.length > 0) {
+            var file = e.target.files[0];
+            var mb = ((file.size / 1024) / 1024);
+            if (file.type == "application/pdf") {
+                if (mb < 15) {
+                    $(this).next().text(file.name);
+                } else {
+                    Swal.fire({
+                        title: 'File Error!',
+                        text: 'Uploaded File should be less than 15 mb',
+                        icon: 'error',
+                        confirmButtonText: 'Okay'
+                    });
+                }
+            } else {
+                Swal.fire({
+                    title: 'File Error!',
+                    text: 'Uploaded File should be a pdf',
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                });
+            }
+        }
+    });
+    $(document).on('change', '#inputGroupFile03', function (e) {
+        console.log(e);
+        if (e.target.files != null && e.target.files.length > 0) {
+            var file = e.target.files[0];
+            var mb = ((file.size / 1024) / 1024);
+            if (file.type == "image/jpeg") {
+                if (mb < 15) {
+                    $(this).next().text(file.name);
+                } else {
+                    Swal.fire({
+                        title: 'File Error!',
+                        text: 'Uploaded File should be less than 15 mb',
+                        icon: 'error',
+                        confirmButtonText: 'Okay'
+                    });
+                }
+            } else {
+                Swal.fire({
+                    title: 'File Error!',
+                    text: 'Uploaded File should be a pdf',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
+            }
+        }
     });
 
 });

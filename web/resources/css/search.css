@@ -1,8 +1,80 @@
-.remove-focus{
+.remove-focus:focus{
     border-color:none;
     box-shadow:none;
     outline:0;
 }
 .fs-14{
     font-size: 14px; 
+}
+.employeeViewButton:hover > strong{
+    font-weight: 800;
+    text-decoration: underline;
+    color: steelblue;
+}
+#empListCards > div:hover:not(.preLoader){
+    box-shadow: 0 0.125rem 0.85rem rgba(0,0,0,.075)!important;
+}
+#empListCards > div > div:hover > img{
+    transform: scale(1.2);
+    transition: 0.6s ease-in-out
+}
+.imgContainer{
+    overflow: hidden;
+}
+.imgContainer > img{
+    transition: 0.6s ease-out
+}
+.leftArrow{
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 50px;
+    width: 18%;
+    padding-top: 32%;
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+    color: grey;
+    transition: 0.5s ease-out;
+}
+.leftArrow:hover{
+    transform: translateX(-10px);
+    transition: 0.5s ease-in;
+}
+.rightArrow{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 50px;
+    width: 18%;
+    padding-top: 32%;
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+    color: grey;
+    transition: 0.5s ease-out;
+}
+.rightArrow:hover{
+    transform: translateX(10px);
+    transition: 0.5s ease-in;
+}
+.text-pinky{
+    color:#ff69b4;
+}
+.filterText{
+    font-family: 'Baloo Tammudu 2',serif;
+    font-size: 25px;
+}
+.pooFontGrandstander{
+    font-family: 'Grandstander', cursive;
+}
+i.fas.fa-power-off:hover{
+    color:hotpink;
+    transform: scale(1.3);
+    transition: 0.2s linear;
+}
+.onHover:hover{
+    color:hotpink;
+    transform: scale(1.1);
+    transition: 0.2s ease-out;
 }
