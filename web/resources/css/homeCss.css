@@ -149,3 +149,6 @@ input{
     padding-left: 4px;
     padding-right: 4px;
 }
+.cursorOnHover{
+    cursor: pointer;
+}

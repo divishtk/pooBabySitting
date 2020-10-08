@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Poo BabySitting</title>
+        <link rel="icon" href="../resources/images/baby-solid.svg" sizes="any" type="image/svg+xml"/>
+        <!--<link rel="icon" href="icon_path" type="image/icon type">-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="../resources/css/bootstrap.min.css"/>
+        <link href="../resources/css/homeCss.css" rel="stylesheet" type="text/css"/>
+        <!--        <link href="../resources/css/registerCss.css" rel="stylesheet" type="text/css"/>
+                <link href="../resources/css/search.css" rel="stylesheet" type="text/css"/>-->
+        <link href="../resources/css/notification.css" rel="stylesheet" type="text/css"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="../resources/js/notificatoins.js" type="text/javascript"></script>
+        <script src="../resources/js/moment.min.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500&display=swap" rel="stylesheet">
+
+        <!-- Font Awesome JS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    </head>
+    <body>
+        <div class="fluid-container">
+            <header class="shadow">
+                <nav class="navbar navbar-light bg-white">
+                    <a class="navbar-brand customIcon"> Poo-<i class="fas fa-baby"></i>-Sitting</a>
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <div class="p-2 bd-highlight cursorOnHover"><i class="fas fa-power-off"></i></div>
+                        <div class="p-2 bd-highlight cursorOnHover onHover">
+                            <div class="dropdown">
+                                <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                                    <i class="fa fa-bell"></i>
+                                </a>
+
+                                <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+                                    <div class="notification-heading">
+                                        <h4 class="menu-title">Notifications</h4>
+                                        <h4 class="menu-title pull-right text-info">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4>
+                                    </div>
+                                    <li class="divider"></li>
+                                    <div class="notifications-wrapper">
+                                        <a class="content" href="#">
+                                            <div class="notification-item">
+                                                <p class="h6 text-dark">Evaluation Deadline 1 · day ago</p>
+                                            </div>
+                                        </a>
+                                        <a class="content" href="#">
+                                            <div class="notification-item">
+                                                <p class="h6 text-dark">Evaluation Deadline 1 · day ago</p>
+                                            </div>
+                                        </a>
+                                        <a class="content" href="#">
+                                            <div class="notification-item">
+                                                <p class="h6 text-dark">Evaluation Deadline 1 · day ago</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <li class="divider"></li>
+                                    <div class="notification-footer">
+                                        <p class="h5 text-center">
+                                            View all
+                                            <i class="fas fa-arrow-right"></i>
+                                        </p>
+                                    </div>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="p-2 bd-highlight cursorOnHover onHover">About</div>
+                        <div class="p-2 bd-highlight cursorOnHover onHover">Service</div>
+                        <div class="p-2 bd-highlight cursorOnHover onHover">Home</div>
+                    </div>
+                </nav>
+            </header>
+            <div class="container" style="overflow: hidden">
+                <br/>
+                <br/>
+                <!--add all the notification here-->
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills border rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active border-bottom" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">All</a>
+                            <a class="nav-link border-bottom" id="v-pills-accepted-tab" data-toggle="pill" href="#v-pills-accepted" role="tab" aria-controls="v-pills-accepted" aria-selected="false">Accepted</a>
+                            <a class="nav-link border-bottom" id="v-pills-rejected-tab" data-toggle="pill" href="#v-pills-rejected" role="tab" aria-controls="v-pills-rejected" aria-selected="false">Rejected</a>
+                            <a class="nav-link border-bottom" id="v-pills-pending-tab" data-toggle="pill" href="#v-pills-pending" role="tab" aria-controls="v-pills-pending" aria-selected="false">Pending</a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                                <ul class="list-group list-group-all-notify">
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="h6">
+                                                    <i class="far fa-check-circle text-success"></i>
+                                                    Received an offer from Gilbert for $200 to be hired on 24 dec 2020<br/>
+                                                    <span class="text-lead fs-8" style="font-size: 8px;float: right;">a few seconds ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="h6">
+                                                    <i class="far fa-times-circle text-success"></i>
+                                                    Received an offer from Gilbert for $200 to be hired on 24 dec 2020<br/>
+                                                    <span class="text-lead fs-8" style="font-size: 8px;float: right;">a few seconds ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="h6">
+                                                    <i class="far fa-check-circle text-success"></i>
+                                                    Received an offer from Gilbert for $200 to be hired on 24 dec 2020<br/>
+                                                    <span class="text-lead fs-8" style="font-size: 8px;float: right;">a few seconds ago</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-accepted" role="tabpanel" aria-labelledby="v-pills-accepted-tab">
+                                <ul class="list-group list-group-accepted-notify">
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-rejected" role="tabpanel" aria-labelledby="v-pills-rejected-tab">
+                                <ul class="list-group list-group-rejected-notify">
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-pending" role="tabpanel" aria-labelledby="v-pills-pending-tab">
+                                <ul class="list-group list-group-pending-notify">
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

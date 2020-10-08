@@ -3,6 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+function convertToDate(date){//format:dd-mm-yyyy
+    var day = new Date(date).getDate();
+    var day = (new Date(date).getMonth()+1);
+    var month = (new Date(date).getMonth()+1);
+    var year = new Date(date).getFullYear();
+    return day+"-"+month+"-"+year;
+}
 function filterFun(gender, age, location, skills) {
     $('#empListCards > div.empIndCard').hide();
     $('#empListCards > div.empIndCard').filter(function (index) {
@@ -237,5 +244,45 @@ $(document).ready(function () {
                 return true;
             }
         }).show();
+    });
+
+    //Hire Me
+    $(document).on('click', '#hireMe', function () {
+
+    });
+
+    $(document).on('click', '#quoteButton', function () {
+        var data = new Object();
+        data.empId = $('.empIndName').data('selId').data('userid');
+        data.quote = $('#hireQuote').val();
+        data.date = convertToDate(new Date($('#datepicker').val()));
+        data.startTime = $('#hireSTime').val();
+        data.endTime = $('#hireETime').val();
+        if (data.empId) {
+            $.ajax({
+                method: "POST",
+                url: "/pooBabySitting/quoteEmployee",
+                data: data,
+//            data: {name: "John", location: "Boston"},
+                dataType: 'JSON'
+            }).done(function (data) {
+                console.log(data);
+                Swal.fire({
+                title: 'Status',
+                text: data.response,
+                icon: 'info',
+                confirmButtonText: 'Okay'
+            });
+            }).fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus.reponseText());
+            });
+        } else {
+            Swal.fire({
+                title: 'Oops!',
+                text: 'Something went Wrong! Refresh and Hire Again',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
+        }
     });
 });

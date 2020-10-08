@@ -160,3 +160,11 @@ input{
 .cursorOnHover{
     cursor: pointer;
 }
+.customIcon{
+    font-weight: 800;
+    font-family: cursive;
+    border: 3px solid hotpink!important;
+    border-radius: 100px;
+    color: hotpink!important;
+    padding: 4px 11px;
+}

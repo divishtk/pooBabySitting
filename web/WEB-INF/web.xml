@@ -8,6 +8,38 @@
         <servlet-name>AuthUserServlet</servlet-name>
         <servlet-class>com.controllers.AuthUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminServlet</servlet-name>
+        <servlet-class>com.controllers.admin.adminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerFunctions</servlet-name>
+        <servlet-class>com.model.functions.CustomerFunctions</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>fetchCustomer</servlet-name>
+        <servlet-class>com.controllers.fetchCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>crudEmployee</servlet-name>
+        <servlet-class>com.admin.crudEmployee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>crudCustomer</servlet-name>
+        <servlet-class>com.admin.crudCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sendOTP</servlet-name>
+        <servlet-class>com.controllers.sendOTP</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>notifications</servlet-name>
+        <servlet-class>com.controllers.notifications</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>quoteEmployee</servlet-name>
+        <servlet-class>com.controllers.quoteEmployee</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>fetchEmployee</servlet-name>
         <url-pattern>/fetchEmployee</url-pattern>
@@ -15,6 +47,38 @@
     <servlet-mapping>
         <servlet-name>AuthUserServlet</servlet-name>
         <url-pattern>/AuthUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminServlet</servlet-name>
+        <url-pattern>/adminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerFunctions</servlet-name>
+        <url-pattern>/CustomerFunctions</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fetchCustomer</servlet-name>
+        <url-pattern>/fetchCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>crudEmployee</servlet-name>
+        <url-pattern>/crudEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>crudCustomer</servlet-name>
+        <url-pattern>/crudCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sendOTP</servlet-name>
+        <url-pattern>/sendOTP</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>notifications</servlet-name>
+        <url-pattern>/notifications</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>quoteEmployee</servlet-name>
+        <url-pattern>/quoteEmployee</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

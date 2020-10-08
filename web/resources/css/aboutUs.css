@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2 Oct, 2020, 10:18:41 AM
+    Author     : Nevets
+*/
+
+.bgAboutUs{
+    background: hotpink;
+}
+.headAboutUs{
+    height: 20vh;
+    background: hotpink;
+    color: white;
+}
+.bodyAboutUs{
+    height: 80vh;
+    background: white;
+    color: darkslategray;
+}
+.bodyAboutUs2{
+    height: 80vh;
+    background: lightgray;
+    color: darkslategray;
+}
+.onHover:hover{
+    color:hotpink;
+    transform: scale(1.1);
+    transition: 0.2s ease-out;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    color: hotpink;
+    text-decoration: none;
+}
+.customIcon{
+    font-weight: 800;
+    font-family: cursive;
+    border: 3px solid hotpink!important;
+    border-radius: 100px;
+    color: hotpink!important;
+    padding: 4px 11px;
+}

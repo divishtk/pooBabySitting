@@ -11,48 +11,22 @@ import java.sql.Blob;
  *
  * @author Nevets
  */
-public class Employee {
-
+public class Customer {
+    //the parent
+    
     //common
     int userId, pincode;
     String name, email, address, extras, contact, age, gender, password;
     //uncommon
-    String skills, bio;
-    Blob[] PARcard;
-    Blob Certificate;
+    int noOfKids;
     Blob profileImage;
-
-    public Employee() {
-
-    }
-
-    public Employee(int userId, String contact, int pincode, String name, String email, String address, String extras, Blob[] PARcard, Blob Certificate, Blob profileImage) {
-        this.userId = userId;
-        this.contact = contact;
-        this.pincode = pincode;
-        this.name = name;
-        this.email = email;
-        this.address = address;
-        this.extras = extras;
-        this.PARcard = PARcard;
-        this.Certificate = Certificate;
-        this.profileImage = profileImage;
-    }
-
+    
     public int getUserId() {
         return userId;
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
     }
 
     public int getPincode() {
@@ -95,28 +69,12 @@ public class Employee {
         this.extras = extras;
     }
 
-    public Blob[] getPARcard() {
-        return PARcard;
+    public String getContact() {
+        return contact;
     }
 
-    public void setPARcard(Blob[] PARcard) {
-        this.PARcard = PARcard;
-    }
-
-    public Blob getCertificate() {
-        return Certificate;
-    }
-
-    public void setCertificate(Blob Certificate) {
-        this.Certificate = Certificate;
-    }
-
-    public Blob getProfileImage() {
-        return profileImage;
-    }
-
-    public void setProfileImage(Blob profileImage) {
-        this.profileImage = profileImage;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getAge() {
@@ -135,20 +93,20 @@ public class Employee {
         this.gender = gender;
     }
 
-    public String getSkills() {
-        return skills;
+    public int getNoOfKids() {
+        return noOfKids;
     }
 
-    public void setSkills(String skills) {
-        this.skills = skills;
+    public void setNoOfKids(int noOfKids) {
+        this.noOfKids = noOfKids;
+    }
+    
+    public Blob getProfileImage() {
+        return profileImage;
     }
 
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
+    public void setProfileImage(Blob profileImage) {
+        this.profileImage = profileImage;
     }
 
     public String getPassword() {

@@ -141,11 +141,11 @@ public class AuthUserServlet extends HttpServlet {
                 PreparedStatement ps = dbConn.prepareStatement(
                         "insert into users(userId, userName, password, contactNumber, emailAddress, addressInfo, pincode, extrasDirection, userAge, gender) "
                         + "values ((Select * from (Select COALESCE(max(userId)+1,101) from users) as t),?,?,?,?,?,?,?,?,?)");
-                ps.setString(1, fn);
+                ps.setString(1, String.join(" ", fn,sn));
                 ps.setString(2, password);
                 ps.setString(3, contactNo);
                 ps.setString(4, email);
-                ps.setString(5, address);
+                ps.setString(5, String.join(", ", address,road,landmark,countrycode,pin));
                 ps.setString(6, pin);
                 ps.setString(7, direction);
                 ps.setString(8, age);
@@ -161,16 +161,16 @@ public class AuthUserServlet extends HttpServlet {
                                 + "((Select * from (Select COALESCE(max(userId)+1,101) from usercustomer) as t),"
                                 + "?,"
                                 + "(Select * from (Select userId from users where emailAddress = ?) as u))");
-                        ps1.setString(1, password);
+                        ps1.setString(1, nokids);
                         ps1.setString(2, email);
 
                         i = ps1.executeUpdate();
                         if (i > 0) {
-                            System.out.println("Value in second table isnerted");
-//                        dbConn.commit();
+                            System.out.println("Value in second table inserted");
+//                          dbConn.commit();
                             response.sendRedirect("/pooBabySitting/");
-//                      RequestDispatcher rd = request.getRequestDispatcher("registerCustPage.html");
-//                      rd.forward(request, response);
+//                          RequestDispatcher rd = request.getRequestDispatcher("registerCustPage.html");
+//                          rd.forward(request, response);
                         }
 
                     } else if ("Employee".equals(userType)) {
