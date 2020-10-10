@@ -2,8 +2,8 @@
 
 .dropdown {
     display:inline-block;
-/*    margin-left:20px;
-    padding:10px;*/
+    /*    margin-left:20px;
+        padding:10px;*/
 }
 .dropdown-menu{
     left: unset!important;
@@ -26,7 +26,7 @@
 
 .menu-title {
     color:#000000;
-    font-size:1.5rem;
+    /*    font-size:1.5rem;*/
     display:inline-block;
 }
 
@@ -60,7 +60,7 @@
 .notification-item {
     padding:10px;
     margin:5px;
-    background:#ccc;
+    background:#cccccc36;
     border-radius:4px;
 }
 
@@ -69,4 +69,15 @@
     float: right;
     font-style: italic;
     color: #000000;
+}
+.cursorOnHover{
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    color: hotpink;
+    text-decoration: none;
 }

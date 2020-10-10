@@ -40,6 +40,10 @@
         <servlet-name>quoteEmployee</servlet-name>
         <servlet-class>com.controllers.quoteEmployee</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>sendEmail</servlet-name>
+        <servlet-class>com.controllers.sendEmail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>fetchEmployee</servlet-name>
         <url-pattern>/fetchEmployee</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>quoteEmployee</servlet-name>
         <url-pattern>/quoteEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sendEmail</servlet-name>
+        <url-pattern>/sendEmail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

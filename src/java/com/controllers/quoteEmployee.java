@@ -66,16 +66,18 @@ public class quoteEmployee extends HttpServlet {
                     if (j > 0) {
                         PreparedStatement psmt1 = dbConn.prepareStatement(""
                                 + "INSERT INTO `NotificationsBlock`"
-                                + "(`notifyid`, `from_id`, `to_id`, `quote_amount`, `hired_date`, `sent_date`) VALUES "
+                                + "(`notifyid`, `from_id`, `to_id`, `quote_amount`, `hired_date`,`start_time`,`end_time`, `sent_date`) VALUES "
                                 + "((Select * from (Select COALESCE(max(notifyid)+1,1) from NotificationsBlock) as t),"
                                 + "(Select userId from users where emailAddress = ?),"
-                                + "?,?,?,?)");
+                                + "?,?,?,?,?,?)");
                         psmt1.setString(1, email);
-                        psmt1.setString(3, empId);
-                        psmt1.setString(4, quote);
-                        psmt1.setString(2, hire_date);
-                        psmt1.setString(5, getCurrentDate());
-                        int k = psmt.executeUpdate();
+                        psmt1.setString(2, empId);
+                        psmt1.setString(3, quote);
+                        psmt1.setString(4, hire_date);
+                        psmt1.setString(5, startTime);
+                        psmt1.setString(6, endTime);
+                        psmt1.setString(7, getCurrentDate());
+                        int k = psmt1.executeUpdate();
                         if (k > 0) {
                             hm.put("response", "Message Sent Successfully");
                             new Gson().toJson(hm, response.getWriter());

@@ -40,7 +40,7 @@ public class AuthUserServlet extends HttpServlet {
         HttpSession hs = null;
         String email = request.getParameter("userId");
         String pass = request.getParameter("password");
-
+        String type = "";
         boolean flag = false, exist = false;
 
         try {
@@ -48,7 +48,7 @@ public class AuthUserServlet extends HttpServlet {
             Connection dbConn = ConnectionManager.getConnection();
 //            dbConn.setAutoCommit(false);
             PreparedStatement ps = dbConn.prepareStatement(
-                    "select emailAddress, password from users where password = ? and emailAddress = ?");
+                    "select emailAddress, password, type from users where password = ? and emailAddress = ?");
             ps.setString(1, pass);
             ps.setString(2, email);
             ResultSet rs = ps.executeQuery();
@@ -56,6 +56,7 @@ public class AuthUserServlet extends HttpServlet {
                 exist = true;
                 String email1 = rs.getString(1);
                 String pass1 = rs.getString(2);
+                type = rs.getString(3);
                 flag = (email.equalsIgnoreCase(email1) && pass.equalsIgnoreCase(pass1) ? true : false);
 
                 if (flag) {
@@ -68,9 +69,13 @@ public class AuthUserServlet extends HttpServlet {
 
             if (exist) {
                 if (flag) {
+                    if ("CUST".equalsIgnoreCase(type)) {
+                        response.sendRedirect("/pooBabySitting/views/home.html");
+                    } else {
+                        response.sendRedirect("/pooBabySitting/views/employeeHome.html");
+                    }
 //                    RequestDispatcher rd = request.getRequestDispatcher("/pooBabySitting/views/home.html");
 //                    rd.forward(request, response);
-                    response.sendRedirect("/pooBabySitting/views/home.html");
                 } else {
                     try (PrintWriter out = response.getWriter()) {
                         out.println("<!DOCTYPE html>");
@@ -139,17 +144,18 @@ public class AuthUserServlet extends HttpServlet {
                 Connection dbConn = ConnectionManager.getConnection();
 //            dbConn.setAutoCommit(false);
                 PreparedStatement ps = dbConn.prepareStatement(
-                        "insert into users(userId, userName, password, contactNumber, emailAddress, addressInfo, pincode, extrasDirection, userAge, gender) "
-                        + "values ((Select * from (Select COALESCE(max(userId)+1,101) from users) as t),?,?,?,?,?,?,?,?,?)");
-                ps.setString(1, String.join(" ", fn,sn));
+                        "insert into users(userId, userName, password, contactNumber, emailAddress, addressInfo, pincode, extrasDirection, userAge, gender, type) "
+                        + "values ((Select * from (Select COALESCE(max(userId)+1,101) from users) as t),?,?,?,?,?,?,?,?,?,?)");
+                ps.setString(1, String.join(" ", fn, sn));
                 ps.setString(2, password);
                 ps.setString(3, contactNo);
                 ps.setString(4, email);
-                ps.setString(5, String.join(", ", address,road,landmark,countrycode,pin));
+                ps.setString(5, String.join(", ", address, road, landmark, countrycode, pin));
                 ps.setString(6, pin);
                 ps.setString(7, direction);
                 ps.setString(8, age);
                 ps.setString(9, gender);
+                ps.setString(10, "Customer".equals(userType)?"CUST":"EMP");
 
                 int i = ps.executeUpdate();
 
@@ -206,7 +212,7 @@ public class AuthUserServlet extends HttpServlet {
                                 ps2.setBlob(4, inputStream2);
                                 ps2.setBlob(5, inputStream3);
                             }
-                            
+
                             ps2.setString(6, skills);
                             ps2.setString(7, bio);
                             ps2.setString(8, email);

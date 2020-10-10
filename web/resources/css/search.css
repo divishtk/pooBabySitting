@@ -34,8 +34,9 @@
     text-align: center;
     vertical-align: middle;
     height: 100%;
-    color: grey;
+    color: white;
     transition: 0.5s ease-out;
+    text-shadow: 0px 2px 6px black;
 }
 .leftArrow:hover{
     transform: translateX(-10px);
@@ -51,8 +52,9 @@
     text-align: center;
     vertical-align: middle;
     height: 100%;
-    color: grey;
+    color: white;
     transition: 0.5s ease-out;
+    text-shadow: 0px 2px 6px black;
 }
 .rightArrow:hover{
     transform: translateX(10px);
@@ -75,8 +77,8 @@ i.fas.fa-power-off:hover{
 }
 .onHover:hover{
     color:hotpink;
-    transform: scale(1.1);
-    transition: 0.2s ease-out;
+/*    transform: scale(1.1);
+    transition: 0.2s ease-out;*/
 }
 a{
     text-decoration: none;

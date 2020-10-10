@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function convertToDate(date){//format:dd-mm-yyyy
+function convertToDate(date) {//format:dd-mm-yyyy
     var day = new Date(date).getDate();
-    var day = (new Date(date).getMonth()+1);
-    var month = (new Date(date).getMonth()+1);
+    var day = (new Date(date).getMonth() + 1);
+    var month = (new Date(date).getMonth() + 1);
     var year = new Date(date).getFullYear();
-    return day+"-"+month+"-"+year;
+    return day + "-" + month + "-" + year;
 }
 function filterFun(gender, age, location, skills) {
     $('#empListCards > div.empIndCard').hide();
@@ -135,8 +135,13 @@ $(document).ready(function () {
         var name = emp.data("name");
         var email = emp.data("email");
         var address = emp.data("address");
+        var bio = emp.data("bio");
         $('.empIndName').text(name);
+        $('.empIndEmail').text(email);
+        $('.empIndAddress').text("Stays at " + address);
+        $('.empIndBio').text(bio);
         $('.empIndName').data('selId', emp);
+        $('.empIndImage').attr('src', emp.find('img').attr('src'));
 
         // Animation complete.
         $(".empListBody").animate({left: '50px', opacity: 0});
@@ -151,9 +156,14 @@ $(document).ready(function () {
             var name = prevEmp.data("name");
             var email = prevEmp.data("email");
             var address = prevEmp.data("address");
+            var bio = prevEmp.data("bio");
+            $('.empIndName').data('selId', prevEmp);
+            
             $('.empIndImage').attr('src', prevEmp.find('img').attr('src'));
             $('.empIndName').text(name);
-            $('.empIndName').data('selId', prevEmp);
+            $('.empIndEmail').text(email);
+            $('.empIndAddress').text("Stays at " + address);
+            $('.empIndBio').text(bio);
         }
     });
 
@@ -163,9 +173,14 @@ $(document).ready(function () {
             var name = nextEmp.data("name");
             var email = nextEmp.data("email");
             var address = nextEmp.data("address");
+            var bio = nextEmp.data("bio");
+            $('.empIndName').data('selId', nextEmp);
+            
             $('.empIndImage').attr('src', nextEmp.find('img').attr('src'));
             $('.empIndName').text(name);
-            $('.empIndName').data('selId', nextEmp);
+            $('.empIndEmail').text(email);
+            $('.empIndAddress').text("Stays at " + address);
+            $('.empIndBio').text(bio);
         }
     });
 
@@ -240,7 +255,7 @@ $(document).ready(function () {
         $('#empListCards > div.empIndCard').filter(function (index) {
             name = $(this).data('name');
 
-            if (name.match(new RegExp(nameVal + ".*"))) {
+            if (name.toLowerCase().match(new RegExp(nameVal.toLowerCase() + ".*"))) {
                 return true;
             }
         }).show();
@@ -255,10 +270,11 @@ $(document).ready(function () {
         var data = new Object();
         data.empId = $('.empIndName').data('selId').data('userid');
         data.quote = $('#hireQuote').val();
-        data.date = convertToDate(new Date($('#datepicker').val()));
+        data.date = convertToDate(new Date($('#datepicker2').val()));
         data.startTime = $('#hireSTime').val();
         data.endTime = $('#hireETime').val();
-        if (data.empId) {
+
+        if (data.empId && data.quote && data.date.indexOf('NaN') == -1 && data.startTime && data.endTime) {
             $.ajax({
                 method: "POST",
                 url: "/pooBabySitting/quoteEmployee",
@@ -268,11 +284,11 @@ $(document).ready(function () {
             }).done(function (data) {
                 console.log(data);
                 Swal.fire({
-                title: 'Status',
-                text: data.response,
-                icon: 'info',
-                confirmButtonText: 'Okay'
-            });
+                    title: 'Status',
+                    text: data.response,
+                    icon: 'info',
+                    confirmButtonText: 'Okay'
+                });
             }).fail(function (jqXHR, textStatus) {
                 alert("Request failed: " + textStatus.reponseText());
             });

@@ -5,10 +5,14 @@
  */
 package com.controllers;
 
+import com.database.ConnectionManager;
 import com.google.gson.Gson;
 import com.model.otpSender;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -74,18 +78,47 @@ public class sendOTP extends HttpServlet {
         HashMap<String, String> hm = new HashMap<>();
         if (!"".equals(OTP) && !"".equals(sessOTP)) {
             if (OTP.equals(sessOTP)) {
-                hm.put("response", "Email Verified! Thank You");
+                boolean b = emailVerifed(request, true);
+                if (b) {
+                    hm.put("response", "Email Verified! Thank You");
+                }else{
+                    hm.put("response", "Oops something went wrong!");
+                }
             } else {
                 hm.put("response", "Incorrect OTP. Failed to Verify OTP. Try Again!");
             }
-        }else{
-            hm.put("response", "OTP"+sessOTP);
+        } else {
+            hm.put("response", "OTP" + sessOTP);
         }
-        new Gson().toJson(hm,response.getWriter());
+        new Gson().toJson(hm, response.getWriter());
     }
 
     @Override
     public String getServletInfo() {
         return "Short description";
+    }
+
+    private boolean emailVerifed(HttpServletRequest request, boolean b) {
+        HttpSession hs;
+        if (b) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection dbConn = ConnectionManager.getConnection();
+//            dbConn.setAutoCommit(false);
+                hs = request.getSession();
+                PreparedStatement ps = dbConn.prepareStatement(
+                        "update users set isVerified = 'YES' where emailAddress = ?");
+                ps.setString(1, (String) hs.getAttribute("email"));
+                int i = ps.executeUpdate();
+                if (i == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return true;
     }
 }
