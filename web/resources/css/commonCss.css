@@ -93,3 +93,20 @@ i.fas.fa-power-off:hover{
 .pooFontGrandstander{
     font-family: 'Grandstander', cursive;
 }
+
+
+/*footer*/
+.footer-All{
+    background: #f2f5f7;
+    color: darkslategray;
+}
+.footer-All > div > div > p.h4 {
+    text-decoration: underline;
+}
+.line-white{
+    border: 1px solid white;
+}
+.staticFont:hover{
+    text-decoration: none;
+    color:white;
+}
