@@ -18,6 +18,15 @@ and open the template in the editor.
         <!--        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
                 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+        <style>
+            
+            .cust
+            {
+                
+               padding-left: 100px;
+                
+            }
+            </style>
     </head>
     <body>
         <div class="container">
@@ -42,19 +51,28 @@ and open the template in the editor.
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" name="password" class="form-control bg-light border-0 rounded" id="exampleInputPassword1" placeholder="Password" required>
+                             <div class="invalid-feedback">
+                                Enter a valid Password
+                            </div>
+                            <div class="valid-feedback">
+                                Looks Good!
+                            </div>
                         </div>
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <label class="form-check-label" for="exampleCheck1">Keep Logged In ?</label>
                         </div>
-                        <button type="submit" class="btn btn-info shadow">
+                        <div class="form-group cust" >
+                        <button type="submit" class="btn btn-info shadow" >
                             Submit
                         </button>
+                        </div>
                     </form>
                     <div class="text-center p-3 text-lead h5">
                         Register as<br/>
-                        <a href="views/registerCustPage.html">Parent </a>|
-                        <a href="views/registerEmpPage.html"> BabySitter</a>
+                       <button onclick="document.location='views/registerCustPage.html'" class="btn btn-info shadow">Parent</button> 
+                 
+                             <button onclick="document.location='views/registerEmpPage.html'" class="btn btn-info shadow">BabySitter</button>
                     </div>
                 </div>
                 <div class="fixed-bottom" style="
